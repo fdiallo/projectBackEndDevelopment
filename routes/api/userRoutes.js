@@ -1,12 +1,11 @@
-
 const express = require('express');
 const router = express.Router();
-const User = require('../models/User');
+const User = require('../../models/User.js');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-// Registration
-router.post('/register', async (req, res) => {
+// Registration (POST /api/users/register)
+router.post('/api/users/register', async (req, res) => {
   try {
     const { username, email, password } = req.body;
     const newUser = new User({ username, email, password });
@@ -17,8 +16,8 @@ router.post('/register', async (req, res) => {
   }
 });
 
-// Login
-router.post('/login', async (req, res) => {
+// Login (POST /api/users/login)
+router.post('/api/users/login', async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
