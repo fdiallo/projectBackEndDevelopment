@@ -1,20 +1,3 @@
-// const express = require('express');
-// const path = require('path');
-// const db = require('./config/connection');
-// //const routes = require('./routes/api');
-// require('dotenv').config();
-
-// const app = express();
-// const PORT = process.env.PORT || 3001;
-
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-// //app.use(routes);
-
-// db.once('open', () => {
-//     app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-// });
 
 // Dependencies
 const express = require("express")
@@ -29,7 +12,6 @@ const taskRoutes = require("./routes/api/taskRoutes.js")
 const users = require('./models/User.js')
 const task = require('./models/Task.js')
 
-
 const { connectDB } = require("./config/connection.js")
 
 connectDB()
@@ -38,8 +20,8 @@ connectDB()
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())     // Middleware to parse JSON bodies
 
-// Routes
-app.use("/", userRoutes);   // Mount the router
+// Routes - // Mount the routers
+app.use("/", userRoutes);
 app.use("/", projectRoutes);
 app.use("/", taskRoutes);
 
